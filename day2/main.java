@@ -25,7 +25,7 @@ public class main {
                     tokens[1].charAt(0),
                     tokens[2]);
 
-            if(check_passwd(pass)) {
+            if(check_passwd_p2(pass)) {
                 ctr++;
             }
         }
@@ -52,5 +52,17 @@ public class main {
         return false;
     }
 
+    public static boolean check_passwd_p2(Password pass) {
+        int pos_1 = pass.getLen1()-1, pos_2 = pass.getLen2()-1;
+        char delim = pass.getDelim();
+        String passwd = pass.getPasswd();
 
+
+        if(passwd.charAt(pos_1) == delim && passwd.charAt(pos_2) == delim) {
+            return false;
+        } else if(passwd.charAt(pos_1) == delim || passwd.charAt(pos_2) == delim) {
+            return true;
+        }
+        return false;
+    }
 }
